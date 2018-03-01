@@ -65,10 +65,13 @@ def makePreviewCam(cams=None, startFrame=None):
 
         _in, out = getInOut(cam)
 
+        # TODO: instead of blindly copying attribute values use xform to deal
+        # with parented cams
         copyAttrs(cam, pcam, _in, startFrame+camidx, not camidx)
         copyAttrs(camShape, pcamShape, _in, startFrame+camidx, not camidx)
 
     pc.select(pcam)
+    pc.lookThru(pcam)
     return cam, camShape
 
 
